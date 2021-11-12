@@ -1,0 +1,674 @@
+{
+  "name": "aws-sagemaker",
+  "label": "AWS SageMaker",
+  "description": "AWS SageMaker helps data scientists and developers to prepare, build, train, and deploy high-quality machine learning (ML) models quickly by bringing together a broad set of capabilities purpose-built for ML.",
+  "publisher": "Community",
+  "cs_approved": false,
+  "cs_compatible": true,
+  "version": "1.0.0",
+  "category": "AWS Service",
+  "help_online": "",
+  "icon_small_name": "small.png",
+  "icon_large_name": "large.png",
+  "configuration": {
+    "fields": [
+      {
+        "title": "Configuration Type",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "select",
+        "name": "config_type",
+        "tooltip": "AWS configuration type",
+        "description": "Type of configuration using which you will provide credentials to access AWS SageMaker and perform automated actions. You can choose between IAM Role or Access Credentials.If you choose 'IAM Role', then in the AWS Instance IAM Role field enter the IAM Role of your AWS instance to access AWS services.If you choose 'Access Credentials', then you must enter the following details: AWS Region: AWS region of your account to access the AWS SageMaker Access Key ID: ID of the AWS Access Key to access AWS services.AWS Secret Access Key: Key of the AWS Secret Access to access AWS services.",
+        "options": [
+          "IAM Role",
+          "Access Credentials"
+        ],
+        "onchange": {
+          "IAM Role": [
+            {
+              "title": "AWS Instance IAM Role",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "text",
+              "name": "aws_iam_role",
+              "tooltip": "IAM Role of your AWS instance to access AWS services.",
+              "description": "IAM Role of your AWS instance to access AWS services."
+            }
+          ],
+          "Access Credentials": [
+            {
+              "title": "AWS Region",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "text",
+              "name": "aws_region",
+              "placeholder": "e.g. us-east-2",
+              "tooltip": "AWS region of your account to access the AWS SageMaker",
+              "description": "AWS region of your account to access the AWS SageMaker"
+            },
+            {
+              "title": "AWS Access Key ID",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "text",
+              "name": "aws_access_key",
+              "tooltip": "ID of the AWS Access Key to access AWS services",
+              "description": "ID of the AWS Access Key to access AWS services"
+            },
+            {
+              "title": "AWS Secret Access Key",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "password",
+              "name": "aws_secret_access_key",
+              "tooltip": "Key of the AWS Secret Access to access AWS services",
+              "description": "Key of the AWS Secret Access to access AWS services"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Verify SSL",
+        "description": "Specifies whether the SSL certificate is to be verified or not.By default, this option is set as True.",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "type": "checkbox",
+        "name": "verify_ssl",
+        "value": true
+      }
+    ]
+  },
+  "operations": [
+    {
+      "operation": "get_actions",
+      "title": "Get Actions",
+      "category": "investigation",
+      "annotation": "get_actions",
+      "description": "Lists the actions in your account and their properties.",
+      "parameters": [
+        {
+          "title": "Assume a Role",
+          "type": "checkbox",
+          "name": "assume_role",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "Enable to assume a role",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the 'Configuration Type'. If you have specified Access Credentials as the 'Configuration Type', then this parameter is optional.If you select this option, i.e., set it to 'True' then you must specify the following parameters: AWS Region: AWS region of your account to access the AWS SageMaker Role ARN: ARN of the role that you want to assume to execute this action on AWS.Session Name: Name of the session that will be created to execute this action on AWS.",
+          "value": false,
+          "onchange": {
+            "true": [
+              {
+                "title": "AWS Region",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "aws_region",
+                "placeholder": "e.g. us-east-2",
+                "tooltip": "Your account's AWS region",
+                "description": "AWS region of your account to access the AWS SageMaker"
+              },
+              {
+                "title": "Role ARN",
+                "type": "text",
+                "name": "role_arn",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
+                "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
+                "description": "ARN of the role that you want assume to execute this action on AWS."
+              },
+              {
+                "title": "Session Name",
+                "type": "text",
+                "name": "session_name",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "tooltip": "Name of the session that will be created to execute this action on AWS.",
+                "description": "Name of the session that will be created to execute this action on AWS."
+              }
+            ]
+          }
+        },
+        {
+          "title": "Source URI",
+          "type": "text",
+          "name": "SourceUri",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "A filter that returns only actions with the specified source URI.",
+          "description": "A filter that returns only actions with the specified source URI."
+        },
+        {
+          "title": "Action Type",
+          "type": "text",
+          "name": "ActionType",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "A filter that returns only actions of the specified type.",
+          "description": "A filter that returns only actions of the specified type."
+        },
+        {
+          "title": "Created After",
+          "type": "datetime",
+          "name": "CreatedAfter",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "A filter that returns only actions created on or after the specified time",
+          "description": "A filter that returns only actions created on or after the specified time"
+        },
+        {
+          "title": "Created Before",
+          "type": "datetime",
+          "name": "CreatedBefore",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "A filter that returns only actions created on or before the specified time",
+          "description": "A filter that returns only actions created on or before the specified time"
+        },
+        {
+          "title": "Sort By",
+          "type": "text",
+          "name": "SortBy",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "The property used to sort results. The default value is CreationTime",
+          "description": "The property used to sort results. The default value is CreationTime"
+        },
+        {
+          "title": "Sort Order",
+          "type": "text",
+          "name": "SortOrder",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "The sort order. The default value is Descending .",
+          "description": "The sort order. The default value is Descending ."
+        },
+        {
+          "title": "Next Token",
+          "type": "text",
+          "name": "NextToken",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "If the previous call to ListActions didn't return the full set of actions, the call returns a token for getting the next set of actions.",
+          "description": "If the previous call to ListActions didn't return the full set of actions, the call returns a token for getting the next set of actions."
+        },
+        {
+          "title": "Max Results",
+          "type": "integer",
+          "name": "MaxResults",
+          "placeholder": "e.g. 10",
+          "value": 10,
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "The maximum number of actions to return in the response. The default value is 10.",
+          "description": "The maximum number of actions to return in the response. The default value is 10."
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "ActionSummaries": [],
+        "ResponseMetadata": {
+          "RequestId": "",
+          "HTTPHeaders": {
+            "date": "",
+            "content-type": "",
+            "content-length": "",
+            "x-amzn-requestid": ""
+          },
+          "RetryAttempts": "",
+          "HTTPStatusCode": ""
+        }
+      }
+    },
+    {
+      "operation": "get_algorithms",
+      "title": "Get Algorithms",
+      "category": "investigation",
+      "annotation": "get_algorithms",
+      "description": "Lists the machine learning algorithms that have been created.",
+      "parameters": [
+        {
+          "title": "Assume a Role",
+          "type": "checkbox",
+          "name": "assume_role",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "Enable to assume a role",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the 'Configuration Type'. If you have specified Access Credentials as the 'Configuration Type', then this parameter is optional.If you select this option, i.e., set it to 'True' then you must specify the following parameters: AWS Region: AWS region of your account to access the AWS SageMaker Role ARN: ARN of the role that you want to assume to execute this action on AWS.Session Name: Name of the session that will be created to execute this action on AWS.",
+          "value": false,
+          "onchange": {
+            "true": [
+              {
+                "title": "AWS Region",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "aws_region",
+                "placeholder": "e.g. us-east-2",
+                "tooltip": "Your account's AWS region",
+                "description": "AWS region of your account to access the AWS SageMaker"
+              },
+              {
+                "title": "Role ARN",
+                "type": "text",
+                "name": "role_arn",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
+                "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
+                "description": "ARN of the role that you want assume to execute this action on AWS."
+              },
+              {
+                "title": "Session Name",
+                "type": "text",
+                "name": "session_name",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "tooltip": "Name of the session that will be created to execute this action on AWS.",
+                "description": "Name of the session that will be created to execute this action on AWS."
+              }
+            ]
+          }
+        },
+        {
+          "title": "Creation Time After",
+          "type": "datetime",
+          "name": "CreationTimeAfter",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "A filter that returns only algorithms created after the specified time (timestamp)",
+          "description": "A filter that returns only algorithms created after the specified time (timestamp)"
+        },
+        {
+          "title": "Creation Time Before",
+          "type": "datetime",
+          "name": "CreationTimeBefore",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "A filter that returns only algorithms created before the specified time (timestamp)",
+          "description": "A filter that returns only algorithms created before the specified time (timestamp)"
+        },
+        {
+          "title": "Name Contains",
+          "type": "text",
+          "name": "NameContains",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "A string in the algorithm name. This filter returns only algorithms whose name contains the specified string.",
+          "description": "A string in the algorithm name. This filter returns only algorithms whose name contains the specified string."
+        },
+        {
+          "title": "Sort By",
+          "type": "text",
+          "name": "SortBy",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "The property used to sort results. The default value is CreationTime",
+          "description": "The property used to sort results. The default value is CreationTime"
+        },
+        {
+          "title": "Sort Order",
+          "type": "text",
+          "name": "SortOrder",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "The sort order. The default value is Ascending .",
+          "description": "The sort order. The default value is Ascending ."
+        },
+        {
+          "title": "Max Results",
+          "type": "integer",
+          "name": "MaxResults",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "The maximum number of algorithms to return in the response.",
+          "description": "The maximum number of algorithms to return in the response."
+        },
+        {
+          "title": "Next Token",
+          "type": "text",
+          "name": "NextToken",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "If the response to a previous ListAlgorithms request was truncated, the response includes a NextToken . To retrieve the next set of algorithms, use the token in the next request.",
+          "description": "If the response to a previous ListAlgorithms request was truncated, the response includes a NextToken . To retrieve the next set of algorithms, use the token in the next request."
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "ResponseMetadata": {
+          "RequestId": "",
+          "HTTPHeaders": {
+            "date": "",
+            "content-type": "",
+            "content-length": "",
+            "x-amzn-requestid": ""
+          },
+          "RetryAttempts": "",
+          "HTTPStatusCode": ""
+        },
+        "AlgorithmSummaryList": []
+      }
+    },
+    {
+      "operation": "get_apps",
+      "title": "Get Applications",
+      "category": "investigation",
+      "annotation": "get_apps",
+      "description": "Lists application from aws sagemaker server based on input parameters you have provided",
+      "parameters": [
+        {
+          "title": "Assume a Role",
+          "type": "checkbox",
+          "name": "assume_role",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "Enable to assume a role",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the 'Configuration Type'. If you have specified Access Credentials as the 'Configuration Type', then this parameter is optional.If you select this option, i.e., set it to 'True' then you must specify the following parameters: AWS Region: AWS region of your account to access the AWS SageMaker Role ARN: ARN of the role that you want to assume to execute this action on AWS.Session Name: Name of the session that will be created to execute this action on AWS.",
+          "value": false,
+          "onchange": {
+            "true": [
+              {
+                "title": "AWS Region",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "aws_region",
+                "placeholder": "e.g. us-east-2",
+                "tooltip": "Your account's AWS region",
+                "description": "AWS region of your account to access the AWS SageMaker"
+              },
+              {
+                "title": "Role ARN",
+                "type": "text",
+                "name": "role_arn",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
+                "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
+                "description": "ARN of the role that you want assume to execute this action on AWS."
+              },
+              {
+                "title": "Session Name",
+                "type": "text",
+                "name": "session_name",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "tooltip": "Name of the session that will be created to execute this action on AWS.",
+                "description": "Name of the session that will be created to execute this action on AWS."
+              }
+            ]
+          }
+        },
+        {
+          "title": "Max Results",
+          "type": "integer",
+          "name": "MaxResults",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "Returns a list up to a specified limit.",
+          "description": "Returns a list up to a specified limit."
+        },
+        {
+          "title": "Sort Order",
+          "type": "text",
+          "name": "SortOrder",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "The sort order for the results. The default is Ascending.",
+          "description": "The sort order for the results. The default is Ascending."
+        },
+        {
+          "title": "Sort By",
+          "type": "text",
+          "name": "SortBy",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "The parameter by which to sort the results. The default is CreationTime.",
+          "description": "The parameter by which to sort the results. The default is CreationTime."
+        },
+        {
+          "title": "Domain ID Equals",
+          "type": "text",
+          "name": "DomainIdEquals",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "A parameter to search for the domain ID.",
+          "description": "A parameter to search for the domain ID."
+        },
+        {
+          "title": "User Profile Name Equals",
+          "type": "text",
+          "name": "UserProfileNameEquals",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "A parameter to search by user profile name",
+          "description": "A parameter to search by user profile name"
+        },
+        {
+          "title": "Next Token",
+          "type": "text",
+          "name": "NextToken",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "If the previous response was truncated, you will receive this token. Use it in your next request to receive the next set of results",
+          "description": "If the previous response was truncated, you will receive this token. Use it in your next request to receive the next set of results"
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "Apps": [],
+        "ResponseMetadata": {
+          "RequestId": "",
+          "HTTPHeaders": {
+            "date": "",
+            "content-type": "",
+            "content-length": "",
+            "x-amzn-requestid": ""
+          },
+          "RetryAttempts": "",
+          "HTTPStatusCode": ""
+        }
+      }
+    },
+    {
+      "operation": "get_artifacts",
+      "title": "Get Artifacts",
+      "category": "investigation",
+      "annotation": "get_artifacts",
+      "description": "Lists the artifacts in your account and their properties.",
+      "parameters": [
+        {
+          "title": "Assume a Role",
+          "type": "checkbox",
+          "name": "assume_role",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "Enable to assume a role",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the 'Configuration Type'. If you have specified Access Credentials as the 'Configuration Type', then this parameter is optional.If you select this option, i.e., set it to 'True' then you must specify the following parameters: AWS Region: AWS region of your account to access the AWS SageMaker Role ARN: ARN of the role that you want to assume to execute this action on AWS.Session Name: Name of the session that will be created to execute this action on AWS.",
+          "value": false,
+          "onchange": {
+            "true": [
+              {
+                "title": "AWS Region",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "aws_region",
+                "placeholder": "e.g. us-east-2",
+                "tooltip": "Your account's AWS region",
+                "description": "AWS region of your account to access the AWS SageMaker"
+              },
+              {
+                "title": "Role ARN",
+                "type": "text",
+                "name": "role_arn",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
+                "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
+                "description": "ARN of the role that you want assume to execute this action on AWS."
+              },
+              {
+                "title": "Session Name",
+                "type": "text",
+                "name": "session_name",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "tooltip": "Name of the session that will be created to execute this action on AWS.",
+                "description": "Name of the session that will be created to execute this action on AWS."
+              }
+            ]
+          }
+        },
+        {
+          "title": "Source URI",
+          "type": "text",
+          "name": "SourceUri",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "A filter that returns only artifacts with the specified source URI.",
+          "description": "A filter that returns only artifacts with the specified source URI."
+        },
+        {
+          "title": "Artifact Type",
+          "type": "text",
+          "name": "ArtifactType",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "A filter that returns only artifacts of the specified type",
+          "description": "A filter that returns only artifacts of the specified type"
+        },
+        {
+          "title": "Created After",
+          "type": "datetime",
+          "name": "CreatedAfter",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "A filter that returns only artifacts created on or after the specified time.",
+          "description": "A filter that returns only artifacts created on or after the specified time."
+        },
+        {
+          "title": "Created Before",
+          "type": "datetime",
+          "name": "CreatedBefore",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "A filter that returns only artifacts created on or before the specified time.",
+          "description": "A filter that returns only artifacts created on or before the specified time."
+        },
+        {
+          "title": "Sort By",
+          "type": "text",
+          "name": "SortBy",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "The parameter by which to sort the results. The default is CreationTime.",
+          "description": "The parameter by which to sort the results. The default is CreationTime."
+        },
+        {
+          "title": "Sort Order",
+          "type": "select",
+          "options": [
+            "Ascending",
+            "Descending"
+          ],
+          "value": "Descending",
+          "name": "SortOrder",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "The sort order for the results. The default is Descending.",
+          "description": "The sort order for the results. The default is Descending."
+        },
+        {
+          "title": "Next Token",
+          "type": "text",
+          "name": "NextToken",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "If the previous call to ListArtifacts didn't return the full set of artifacts, the call returns a token for getting the next set of artifacts",
+          "description": "If the previous call to ListArtifacts didn't return the full set of artifacts, the call returns a token for getting the next set of artifacts"
+        },
+        {
+          "title": "Max Results",
+          "type": "integer",
+          "name": "MaxResults",
+          "value": 10,
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "The maximum number of artifacts to return in the response. The default value is 10.",
+          "description": "The maximum number of artifacts to return in the response. The default value is 10."
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "ResponseMetadata": {
+          "RequestId": "",
+          "HTTPHeaders": {
+            "date": "",
+            "content-type": "",
+            "content-length": "",
+            "x-amzn-requestid": ""
+          },
+          "RetryAttempts": "",
+          "HTTPStatusCode": ""
+        },
+        "ArtifactSummaries": []
+      }
+    }
+  ]
+}
+
+
