@@ -7,7 +7,7 @@
   "cs_compatible": true,
   "version": "1.0.0",
   "category": "AWS Service",
-  "help_online": "",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/aws-sagemaker/193/aws-sagemaker-v1-0-0",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
   "configuration": {
@@ -20,7 +20,7 @@
         "type": "select",
         "name": "config_type",
         "tooltip": "AWS configuration type",
-        "description": "Type of configuration using which you will provide credentials to access AWS SageMaker and perform automated actions. You can choose between IAM Role or Access Credentials.If you choose 'IAM Role', then in the AWS Instance IAM Role field enter the IAM Role of your AWS instance to access AWS services.If you choose 'Access Credentials', then you must enter the following details: AWS Region: AWS region of your account to access the AWS SageMaker Access Key ID: ID of the AWS Access Key to access AWS services.AWS Secret Access Key: Key of the AWS Secret Access to access AWS services.",
+        "description": "Type of configuration using which you will provide credentials to access AWS SageMaker and perform automated actions. You can choose betweenIAM RoleorAccess Credentials. If you choose 'IAM Role', then in theAWS Instance IAM Rolefield enter the IAM Role of your AWS instance to access AWS services. If you choose 'Access Credentials', then you must enter the following details: AWS Region: AWS region of your account to access the AWS SageMaker AWS Access Key ID: ID of the AWS Access Key to access AWS services. AWS Secret Access Key: Key of the AWS Secret Access to access AWS services.",
         "options": [
           "IAM Role",
           "Access Credentials"
@@ -75,7 +75,7 @@
       },
       {
         "title": "Verify SSL",
-        "description": "Specifies whether the SSL certificate is to be verified or not.By default, this option is set as True.",
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True.",
         "required": false,
         "editable": true,
         "visible": true,
@@ -91,7 +91,7 @@
       "title": "Get Actions",
       "category": "investigation",
       "annotation": "get_actions",
-      "description": "Lists the actions in your account and their properties.",
+      "description": "Lists the actions and their properties in your AWS SageMaker account based on the input parameters you have specified.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -101,7 +101,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the 'Configuration Type'. If you have specified Access Credentials as the 'Configuration Type', then this parameter is optional.If you select this option, i.e., set it to 'True' then you must specify the following parameters: AWS Region: AWS region of your account to access the AWS SageMaker Role ARN: ARN of the role that you want to assume to execute this action on AWS.Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role. Note: You must enable this option, i.e., this parameter is required, if you have specifiedIAM Roleas the 'Configuration Type'. If you have specifiedAccess Credentialsas the 'Configuration Type', then this parameter is optional. If you select this option, i.e., set it to 'True'then you must specify the following parameters: AWS Region: AWS region of your account to access AWS Lambda and retrieve details of your account's limits and usage. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -148,7 +148,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "A filter that returns only actions with the specified source URI.",
-          "description": "A filter that returns only actions with the specified source URI."
+          "description": "Specify the source URI using which you want to filter actions retrieved by this operation, i.e., if you specify this parameter, then this operation will return actions with the specified source URI only."
         },
         {
           "title": "Action Type",
@@ -158,7 +158,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "A filter that returns only actions of the specified type.",
-          "description": "A filter that returns only actions of the specified type."
+          "description": "Specify the action type using which you want to filter actions retrieved by this operation, i.e., if you specify this parameter, then this operation will return actions of only the specified type."
         },
         {
           "title": "Created After",
@@ -168,7 +168,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "A filter that returns only actions created on or after the specified time",
-          "description": "A filter that returns only actions created on or after the specified time"
+          "description": "Select the DateTime to filter actions retrieved by this operation, i.e., if you specify this parameter, then this operation will return only those actions that are created on or after the specified DateTime."
         },
         {
           "title": "Created Before",
@@ -178,7 +178,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "A filter that returns only actions created on or before the specified time",
-          "description": "A filter that returns only actions created on or before the specified time"
+          "description": "Select the DateTime to filter actions retrieved by this operation, i.e., if you specify this parameter, then this operation will return only those actions that are created on or before the specified DateTime."
         },
         {
           "title": "Sort By",
@@ -188,7 +188,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "The property used to sort results. The default value is CreationTime",
-          "description": "The property used to sort results. The default value is CreationTime"
+          "description": "Specify the name of the field based on which you want to sort the results retrieved by this operation.The default value isCreationTime."
         },
         {
           "title": "Sort Order",
@@ -198,7 +198,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "The sort order. The default value is Descending .",
-          "description": "The sort order. The default value is Descending ."
+          "description": "Specify the order of sorting the result; Ascending or Descending. The default value is set as Descending."
         },
         {
           "title": "Next Token",
@@ -208,7 +208,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "If the previous call to ListActions didn't return the full set of actions, the call returns a token for getting the next set of actions.",
-          "description": "If the previous call to ListActions didn't return the full set of actions, the call returns a token for getting the next set of actions."
+          "description": "If the previous call to ListActions does not return the full set of actions, i.e., it is truncated, then the call returns a token for getting the next set of actions. You can use this token in your next request to receive the next set of results."
         },
         {
           "title": "Max Results",
@@ -220,7 +220,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "The maximum number of actions to return in the response. The default value is 10.",
-          "description": "The maximum number of actions to return in the response. The default value is 10."
+          "description": "The maximum number of actions that should be included in the response of this operation. The default value is set as 10."
         }
       ],
       "enabled": true,
@@ -244,7 +244,7 @@
       "title": "Get Algorithms",
       "category": "investigation",
       "annotation": "get_algorithms",
-      "description": "Lists the machine learning algorithms that have been created.",
+      "description": "Lists the machine learning algorithms that have been createdin your AWS SageMaker accountbased on the input parameters you have specified.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -254,7 +254,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the 'Configuration Type'. If you have specified Access Credentials as the 'Configuration Type', then this parameter is optional.If you select this option, i.e., set it to 'True' then you must specify the following parameters: AWS Region: AWS region of your account to access the AWS SageMaker Role ARN: ARN of the role that you want to assume to execute this action on AWS.Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role. Note: You must enable this option, i.e., this parameter is required, if you have specifiedIAM Roleas the 'Configuration Type'. If you have specifiedAccess Credentialsas the 'Configuration Type', then this parameter is optional. If you select this option, i.e., set it to 'True'then you must specify the following parameters: AWS Region: AWS region of your account to access AWS Lambda and retrieve details of your account's limits and usage. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -301,7 +301,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "A filter that returns only algorithms created after the specified time (timestamp)",
-          "description": "A filter that returns only algorithms created after the specified time (timestamp)"
+          "description": "Select the DateTime to filter algorithms retrieved by this operation, i.e., if you specify this parameter, then this operation will return only those algorithms that are created on or after the specified DateTime(timestamp)."
         },
         {
           "title": "Creation Time Before",
@@ -311,7 +311,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "A filter that returns only algorithms created before the specified time (timestamp)",
-          "description": "A filter that returns only algorithms created before the specified time (timestamp)"
+          "description": "Select the DateTime to filter algorithms retrieved by this operation, i.e., if you specify this parameter, then this operation will return only those algorithms that are created on or before the specified DateTime(timestamp)."
         },
         {
           "title": "Name Contains",
@@ -321,7 +321,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "A string in the algorithm name. This filter returns only algorithms whose name contains the specified string.",
-          "description": "A string in the algorithm name. This filter returns only algorithms whose name contains the specified string."
+          "description": "Specify a string in the algorithm name to filter algorithms retrieved by this operation, i.e., if you specify this parameter, then this operation will return only those algorithms whose name contains the specified string."
         },
         {
           "title": "Sort By",
@@ -331,7 +331,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "The property used to sort results. The default value is CreationTime",
-          "description": "The property used to sort results. The default value is CreationTime"
+          "description": "Specify the name of the field based on which you want to sort the results retrieved by this operation.The default value isCreationTime."
         },
         {
           "title": "Sort Order",
@@ -341,7 +341,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "The sort order. The default value is Ascending .",
-          "description": "The sort order. The default value is Ascending ."
+          "description": "Specify the order of sorting the result; Ascending or Descending. The default value is set as Ascending."
         },
         {
           "title": "Max Results",
@@ -351,7 +351,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "The maximum number of algorithms to return in the response.",
-          "description": "The maximum number of algorithms to return in the response."
+          "description": "The maximum number of algorithms that should be included in the response of this operation."
         },
         {
           "title": "Next Token",
@@ -361,7 +361,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "If the response to a previous ListAlgorithms request was truncated, the response includes a NextToken . To retrieve the next set of algorithms, use the token in the next request.",
-          "description": "If the response to a previous ListAlgorithms request was truncated, the response includes a NextToken . To retrieve the next set of algorithms, use the token in the next request."
+          "description": "If the previous call to ListAlgorithms does not return the full set of actions, i.e., it is truncated, then the call returns a token for getting the next set of algorithms. You can use this token in your next request to receive the next set of results."
         }
       ],
       "enabled": true,
@@ -385,7 +385,7 @@
       "title": "Get Applications",
       "category": "investigation",
       "annotation": "get_apps",
-      "description": "Lists application from aws sagemaker server based on input parameters you have provided",
+      "description": "Lists the applications in your AWS SageMaker account based on the input parameters you have specified.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -395,7 +395,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the 'Configuration Type'. If you have specified Access Credentials as the 'Configuration Type', then this parameter is optional.If you select this option, i.e., set it to 'True' then you must specify the following parameters: AWS Region: AWS region of your account to access the AWS SageMaker Role ARN: ARN of the role that you want to assume to execute this action on AWS.Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role. Note: You must enable this option, i.e., this parameter is required, if you have specifiedIAM Roleas the 'Configuration Type'. If you have specifiedAccess Credentialsas the 'Configuration Type', then this parameter is optional. If you select this option, i.e., set it to 'True'then you must specify the following parameters: AWS Region: AWS region of your account to access AWS Lambda and retrieve details of your account's limits and usage. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -442,7 +442,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Returns a list up to a specified limit.",
-          "description": "Returns a list up to a specified limit."
+          "description": "The maximum number of applications that should be included in the response of this operation."
         },
         {
           "title": "Sort Order",
@@ -452,7 +452,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "The sort order for the results. The default is Ascending.",
-          "description": "The sort order for the results. The default is Ascending."
+          "description": "Specify the order of sorting the result; Ascending or Descending. The default value is set as Ascending."
         },
         {
           "title": "Sort By",
@@ -462,7 +462,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "The parameter by which to sort the results. The default is CreationTime.",
-          "description": "The parameter by which to sort the results. The default is CreationTime."
+          "description": "Specify the name of the field based on which you want to sort the results retrieved by this operation.The default value isCreationTime."
         },
         {
           "title": "Domain ID Equals",
@@ -472,7 +472,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "A parameter to search for the domain ID.",
-          "description": "A parameter to search for the domain ID."
+          "description": "Specify the domain ID using which you want to filter applications retrieved by this operation, i.e., if you specify this parameter, then this operation will return only those applications whose domain ID matches the specified domain ID."
         },
         {
           "title": "User Profile Name Equals",
@@ -482,7 +482,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "A parameter to search by user profile name",
-          "description": "A parameter to search by user profile name"
+          "description": "Specify the user profile name using which you want to filter applications retrieved by this operation, i.e., if you specify this parameter, then this operation will return only those applications whose user profile name matches the specified user profile name."
         },
         {
           "title": "Next Token",
@@ -492,7 +492,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "If the previous response was truncated, you will receive this token. Use it in your next request to receive the next set of results",
-          "description": "If the previous response was truncated, you will receive this token. Use it in your next request to receive the next set of results"
+          "description": "If the previous call to ListApplications does not return the full set of applications, i.e., it is truncated, then the call returns a token for getting the next set of applications. You can use this token in your next request to receive the next set of results."
         }
       ],
       "enabled": true,
@@ -516,7 +516,7 @@
       "title": "Get Artifacts",
       "category": "investigation",
       "annotation": "get_artifacts",
-      "description": "Lists the artifacts in your account and their properties.",
+      "description": "Lists the artifactsand their properties in your AWS SageMaker account based on the input parameters you have specified.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -526,7 +526,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the 'Configuration Type'. If you have specified Access Credentials as the 'Configuration Type', then this parameter is optional.If you select this option, i.e., set it to 'True' then you must specify the following parameters: AWS Region: AWS region of your account to access the AWS SageMaker Role ARN: ARN of the role that you want to assume to execute this action on AWS.Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role. Note: You must enable this option, i.e., this parameter is required, if you have specifiedIAM Roleas the 'Configuration Type'. If you have specifiedAccess Credentialsas the 'Configuration Type', then this parameter is optional. If you select this option, i.e., set it to 'True'then you must specify the following parameters: AWS Region: AWS region of your account to access AWS Lambda and retrieve details of your account's limits and usage. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -573,7 +573,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "A filter that returns only artifacts with the specified source URI.",
-          "description": "A filter that returns only artifacts with the specified source URI."
+          "description": "Specify the source URI using which you want to filter artifacts retrieved by this operation, i.e., if you specify this parameter, then this operation will return artifacts with the specified source URI only."
         },
         {
           "title": "Artifact Type",
@@ -583,7 +583,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "A filter that returns only artifacts of the specified type",
-          "description": "A filter that returns only artifacts of the specified type"
+          "description": "Specify the action type using which you want to filter artifacts retrieved by this operation, i.e., if you specify this parameter, then this operation will return artifacts of only the specified type."
         },
         {
           "title": "Created After",
@@ -593,7 +593,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "A filter that returns only artifacts created on or after the specified time.",
-          "description": "A filter that returns only artifacts created on or after the specified time."
+          "description": "Select the DateTime to filter artifacts retrieved by this operation, i.e., if you specify this parameter, then this operation will return only those artifacts that are created on or after the specified DateTime."
         },
         {
           "title": "Created Before",
@@ -603,7 +603,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "A filter that returns only artifacts created on or before the specified time.",
-          "description": "A filter that returns only artifacts created on or before the specified time."
+          "description": "Select the DateTime to filter artifacts retrieved by this operation, i.e., if you specify this parameter, then this operation will return only those artifacts that are created on or before the specified DateTime."
         },
         {
           "title": "Sort By",
@@ -613,7 +613,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "The parameter by which to sort the results. The default is CreationTime.",
-          "description": "The parameter by which to sort the results. The default is CreationTime."
+          "description": "Specify the name of the field based on which you want to sort the results retrieved by this operation.The default value isCreationTime."
         },
         {
           "title": "Sort Order",
@@ -628,7 +628,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "The sort order for the results. The default is Descending.",
-          "description": "The sort order for the results. The default is Descending."
+          "description": "Specify the order of sorting the result; Ascending or Descending. The default value is set as Descending."
         },
         {
           "title": "Next Token",
@@ -638,7 +638,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "If the previous call to ListArtifacts didn't return the full set of artifacts, the call returns a token for getting the next set of artifacts",
-          "description": "If the previous call to ListArtifacts didn't return the full set of artifacts, the call returns a token for getting the next set of artifacts"
+          "description": "If the previous call to ListArtifacts does not return the full set of artifacts, i.e., it is truncated, then the call returns a token for getting the next set of artifacts. You can use this token in your next request to receive the next set of results."
         },
         {
           "title": "Max Results",
@@ -649,7 +649,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "The maximum number of artifacts to return in the response. The default value is 10.",
-          "description": "The maximum number of artifacts to return in the response. The default value is 10."
+          "description": "The maximum number of artifacts that should be included in the response of this operation. The default value is set as 10."
         }
       ],
       "enabled": true,
@@ -670,5 +670,3 @@
     }
   ]
 }
-
-
