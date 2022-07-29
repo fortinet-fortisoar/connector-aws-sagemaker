@@ -1,5 +1,5 @@
 """ Copyright start
-  Copyright (C) 2008 - 2021 Fortinet Inc.
+  Copyright (C) 2008 - 2022 Fortinet Inc.
   All rights reserved.
   FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
   Copyright end """
@@ -93,6 +93,7 @@ def get_artifacts(config, params):
     except Exception as Err:
         logger.exception(Err)
         raise ConnectorError(Err)
+
 
 operations = {
     'get_actions': get_actions,

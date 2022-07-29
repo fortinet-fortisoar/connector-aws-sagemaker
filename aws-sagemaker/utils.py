@@ -1,5 +1,5 @@
 """ Copyright start
-  Copyright (C) 2008 - 2021 Fortinet Inc.
+  Copyright (C) 2008 - 2022 Fortinet Inc.
   All rights reserved.
   FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
   Copyright end """
@@ -10,7 +10,6 @@ from connectors.core.connector import get_logger, ConnectorError
 
 logger = get_logger('aws-sagemaker')
 TEMP_CRED_ENDPOINT = 'http://169.254.169.254/latest/meta-data/iam/security-credentials/{}'
-
 
 
 def _get_temp_credentials(config):
