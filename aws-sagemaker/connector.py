@@ -9,6 +9,7 @@ from .operations import check_health, operations
 
 logger = get_logger('aws-sagemaker')
 
+
 class SecurityHub(Connector):
     def execute(self, config, operation, params, **kwargs):
         try:
