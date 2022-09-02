@@ -1,5 +1,5 @@
 """ Copyright start
-  Copyright (C) 2008 - 2021 Fortinet Inc.
+  Copyright (C) 2008 - 2022 Fortinet Inc.
   All rights reserved.
   FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
   Copyright end """
@@ -9,8 +9,9 @@ import boto3
 from connectors.core.connector import get_logger, ConnectorError
 from .utils import _get_aws_client, _get_temp_credentials
 
-logger = get_logger('aws-ssagemaker')
+logger = get_logger('aws-sagemaker')
 TEMP_CRED_ENDPOINT = 'http://169.254.169.254/latest/meta-data/iam/security-credentials/{}'
+
 
 def remove_unwanted_param(params):
     try:
@@ -38,10 +39,10 @@ def check_health(config):
             aws_access_key = config.get('aws_access_key')
             aws_region = config.get('aws_region')
             aws_secret_access_key = config.get('aws_secret_access_key')
-            client = boto3.client('sts', region_name=aws_region, aws_access_key_id=aws_access_key,
+            client = boto3.client('sagemaker', region_name=aws_region, aws_access_key_id=aws_access_key,
                                   aws_secret_access_key=aws_secret_access_key)
-            account_id = client.get_caller_identity()["Account"]
-            if account_id:
+            res = client.list_artifacts(MaxResults=1)
+            if res:
                 return True
             else:
                 logger.error('Invalid Region name or Aws Access Key ID or Aws Secret Access Key')
@@ -93,6 +94,7 @@ def get_artifacts(config, params):
     except Exception as Err:
         logger.exception(Err)
         raise ConnectorError(Err)
+
 
 operations = {
     'get_actions': get_actions,

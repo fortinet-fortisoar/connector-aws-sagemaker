@@ -3,325 +3,16 @@
   "data": [
     {
       "@type": "WorkflowCollection",
-      "name": "Sample - AWS SageMaker - 1.0.0",
-      "description": null,
+      "name": "Sample - AWS SageMaker - 1.1.0",
+      "description": "Sample playbooks for \"AWS SageMaker\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
       "visible": true,
-      "image": null,
-      "uuid": "3db1d0d8-9bdf-4fd0-a578-c421f22bb85b",
-      "id": 570,
-      "createUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
-      "createDate": 1634809750,
-      "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
-      "modifyDate": 1634809766,
+      "image": "",
+      "uuid": "b0dad48f-25eb-4a2a-a242-eeb47c648aa0",
+      "id": 242,
+      "deletedAt": null,
+      "importedBy": [],
       "recordTags": [],
       "workflows": [
-        {
-          "@type": "Workflow",
-          "triggerLimit": null,
-          "name": "Get Actions",
-          "aliasName": null,
-          "tag": null,
-          "description": "Lists the actions in your account and their properties",
-          "isActive": false,
-          "singleRecordExecution": false,
-          "remoteExecutableFlag": false,
-          "parameters": [],
-          "synchronous": false,
-          "lastModifyDate": 1634816548,
-          "collection": "/api/3/workflow_collections/3db1d0d8-9bdf-4fd0-a578-c421f22bb85b",
-          "versions": [],
-          "triggerStep": "/api/3/workflow_steps/b2452dab-1913-4396-bba3-a2a30d0a3132",
-          "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "arguments": {
-                "route": "8f76cdd9-c945-4f0f-9561-421ca56f71c0",
-                "title": "AWS SageMaker: Get Actions",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
-                  }
-                },
-                "executeButtonText": "Execute",
-                "noRecordExecution": true,
-                "singleRecordExecution": false
-              },
-              "status": null,
-              "top": "40",
-              "left": "40",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-              "uuid": "b2452dab-1913-4396-bba3-a2a30d0a3132",
-              "id": 15878
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get Actions",
-              "description": null,
-              "arguments": {
-                "name": "AWS SageMaker",
-                "config": "bdfc7c88-bf14-453d-9484-359f7235551b",
-                "params": {
-                  "SortBy": "",
-                  "NextToken": "",
-                  "SortOrder": "",
-                  "SourceUri": "",
-                  "ActionType": "",
-                  "MaxResults": 10,
-                  "assume_role": false,
-                  "CreatedAfter": "",
-                  "CreatedBefore": ""
-                },
-                "version": "1.0.0",
-                "connector": "aws-sagemaker",
-                "operation": "get_actions",
-                "operationTitle": "Get Actions",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "120",
-              "left": "440",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "uuid": "dacc0ca5-470f-45c3-8f2a-50417149383a",
-              "id": 15879
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "name": "Start -> Get Actions",
-              "targetStep": "/api/3/workflow_steps/dacc0ca5-470f-45c3-8f2a-50417149383a",
-              "sourceStep": "/api/3/workflow_steps/b2452dab-1913-4396-bba3-a2a30d0a3132",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "da9fda0f-dd3b-4eb4-b58b-5e218171df55"
-            }
-          ],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "ac44a5a8-6c70-490d-a98f-7fb33b02d39b",
-          "recordTags": [
-            "AWS",
-            "aws-sagemaker"
-          ],
-          "id": 5565,
-          "createUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
-          "createDate": 1634810561,
-          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
-          "modifyDate": 1634816936,
-          "owners": [],
-          "isPrivate": false
-        },
-        {
-          "@type": "Workflow",
-          "triggerLimit": null,
-          "name": "Get Applications",
-          "aliasName": null,
-          "tag": null,
-          "description": "Lists application from aws sagemaker server based on input parameters you have provided",
-          "isActive": false,
-          "singleRecordExecution": false,
-          "remoteExecutableFlag": false,
-          "parameters": [],
-          "synchronous": false,
-          "lastModifyDate": 1634816664,
-          "collection": "/api/3/workflow_collections/3db1d0d8-9bdf-4fd0-a578-c421f22bb85b",
-          "versions": [],
-          "triggerStep": "/api/3/workflow_steps/00add916-3276-4447-abc8-8944b54102d8",
-          "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "arguments": {
-                "route": "d3316875-961b-4566-b87b-bcafba224094",
-                "title": "AWS SageMaker: Get Applications",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
-                  }
-                },
-                "executeButtonText": "Execute",
-                "noRecordExecution": true,
-                "singleRecordExecution": false
-              },
-              "status": null,
-              "top": "40",
-              "left": "40",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-              "uuid": "00add916-3276-4447-abc8-8944b54102d8",
-              "id": 15882
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get Applications",
-              "description": null,
-              "arguments": {
-                "name": "AWS SageMaker",
-                "config": "bdfc7c88-bf14-453d-9484-359f7235551b",
-                "params": {
-                  "SortBy": "",
-                  "NextToken": "",
-                  "SortOrder": "",
-                  "MaxResults": "",
-                  "assume_role": false,
-                  "DomainIdEquals": "",
-                  "UserProfileNameEquals": ""
-                },
-                "version": "1.0.0",
-                "connector": "aws-sagemaker",
-                "operation": "get_apps",
-                "operationTitle": "Get Apps",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "193",
-              "left": "361",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "uuid": "8dae73ef-bc9a-4ddc-b7f0-4f08b3595d0d",
-              "id": 15883
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "name": "Start -> Get Applications",
-              "targetStep": "/api/3/workflow_steps/8dae73ef-bc9a-4ddc-b7f0-4f08b3595d0d",
-              "sourceStep": "/api/3/workflow_steps/00add916-3276-4447-abc8-8944b54102d8",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "6c6d0677-541c-452a-907c-ee5501d87e7e"
-            }
-          ],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "b6a97450-c0a2-471d-91cf-c755ace213b8",
-          "recordTags": [
-            "AWS",
-            "aws-sagemaker"
-          ],
-          "id": 5567,
-          "createUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
-          "createDate": 1634814273,
-          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
-          "modifyDate": 1634816936,
-          "owners": [],
-          "isPrivate": false
-        },
-        {
-          "@type": "Workflow",
-          "triggerLimit": null,
-          "name": "Get Artifacts",
-          "aliasName": null,
-          "tag": null,
-          "description": "Lists the artifacts in your account and their properties.",
-          "isActive": false,
-          "singleRecordExecution": false,
-          "remoteExecutableFlag": false,
-          "parameters": [],
-          "synchronous": false,
-          "lastModifyDate": 1634816870,
-          "collection": "/api/3/workflow_collections/3db1d0d8-9bdf-4fd0-a578-c421f22bb85b",
-          "versions": [],
-          "triggerStep": "/api/3/workflow_steps/e8b9e4d3-7903-40d8-b268-6d52ae81e55d",
-          "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Get Artifacts",
-              "description": null,
-              "arguments": {
-                "name": "AWS SageMaker",
-                "config": "bdfc7c88-bf14-453d-9484-359f7235551b",
-                "params": {
-                  "SortBy": "",
-                  "NextToken": "",
-                  "SortOrder": "Descending",
-                  "SourceUri": "",
-                  "MaxResults": 10,
-                  "assume_role": false,
-                  "ArtifactType": "",
-                  "CreatedAfter": "2021-10-03T18:30:00.000Z",
-                  "CreatedBefore": "2021-10-19T18:30:00.000Z"
-                },
-                "version": "1.0.0",
-                "connector": "aws-sagemaker",
-                "operation": "get_artifacts",
-                "operationTitle": "Get Artifacts",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "177",
-              "left": "344",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "uuid": "2003d4ac-db58-411c-93ca-2eda2e143ad1",
-              "id": 15885
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "arguments": {
-                "route": "98955cc3-4acb-403b-8f72-a0d05ed7c8fd",
-                "title": "AWS SageMaker: Get Artifacts",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
-                  }
-                },
-                "executeButtonText": "Execute",
-                "noRecordExecution": true,
-                "singleRecordExecution": false
-              },
-              "status": null,
-              "top": "40",
-              "left": "40",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-              "uuid": "e8b9e4d3-7903-40d8-b268-6d52ae81e55d",
-              "id": 15884
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "name": "Start -> Get Artifacts",
-              "targetStep": "/api/3/workflow_steps/2003d4ac-db58-411c-93ca-2eda2e143ad1",
-              "sourceStep": "/api/3/workflow_steps/e8b9e4d3-7903-40d8-b268-6d52ae81e55d",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "dfcbf508-cd9b-48c9-ad94-a0d63d7e3e01"
-            }
-          ],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "ca04a6a0-f6ec-4f7d-9f0a-d9162da7b58a",
-          "recordTags": [
-            "AWS",
-            "aws-sagemaker"
-          ],
-          "id": 5568,
-          "createUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
-          "createDate": 1634816759,
-          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
-          "modifyDate": 1634816937,
-          "owners": [],
-          "isPrivate": false
-        },
         {
           "@type": "Workflow",
           "triggerLimit": null,
@@ -330,14 +21,15 @@
           "tag": null,
           "description": "Lists the machine learning algorithms that have been created",
           "isActive": false,
+          "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1634816497,
-          "collection": "/api/3/workflow_collections/3db1d0d8-9bdf-4fd0-a578-c421f22bb85b",
+          "lastModifyDate": 1661775423,
+          "collection": "/api/3/workflow_collections/b0dad48f-25eb-4a2a-a242-eeb47c648aa0",
           "versions": [],
-          "triggerStep": "/api/3/workflow_steps/a512cae1-97df-4157-9474-d2fc73fe3f91",
+          "triggerStep": "/api/3/workflow_steps/e841082a-a794-467e-86d8-dc17b4082b33",
           "steps": [
             {
               "@type": "WorkflowStep",
@@ -356,7 +48,7 @@
                   "CreationTimeAfter": "2021-10-03T18:30:00.000Z",
                   "CreationTimeBefore": "2021-10-19T18:30:00.000Z"
                 },
-                "version": "1.0.0",
+                "version": "1.1.0",
                 "connector": "aws-sagemaker",
                 "operation": "get_algorithms",
                 "operationTitle": "Get Algorithms",
@@ -367,15 +59,15 @@
               "top": "140",
               "left": "360",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "uuid": "9adcaa6f-3f75-44b7-adab-770e9a53a274",
-              "id": 15881
+              "group": null,
+              "uuid": "6213e811-2a1a-40f7-a186-fc96a7381a35"
             },
             {
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
-                "route": "57ed10c6-e515-4ba5-a44c-ad51cf0dc113",
+                "route": "a32597f6-7280-45fc-b39a-7553b89af5f3",
                 "title": "AWS SageMaker: Get Algorithms",
                 "resources": [
                   "alerts"
@@ -395,34 +87,340 @@
               "top": "40",
               "left": "40",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-              "uuid": "a512cae1-97df-4157-9474-d2fc73fe3f91",
-              "id": 15880
+              "group": null,
+              "uuid": "e841082a-a794-467e-86d8-dc17b4082b33"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
               "name": "Start -> Get Algorithms",
-              "targetStep": "/api/3/workflow_steps/9adcaa6f-3f75-44b7-adab-770e9a53a274",
-              "sourceStep": "/api/3/workflow_steps/a512cae1-97df-4157-9474-d2fc73fe3f91",
+              "targetStep": "/api/3/workflow_steps/6213e811-2a1a-40f7-a186-fc96a7381a35",
+              "sourceStep": "/api/3/workflow_steps/e841082a-a794-467e-86d8-dc17b4082b33",
               "label": null,
               "isExecuted": false,
-              "uuid": "5c4585ef-bfb1-4bd9-a604-d025a37bef2e"
+              "uuid": "0fad5424-941c-425b-825f-3bfe3c3fb83b"
             }
           ],
+          "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "d82d5886-6328-42f7-b1ec-7babf5e699f7",
+          "uuid": "03894b7a-301f-474e-9a99-2ad921e94807",
+          "id": 3326,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
           "recordTags": [
             "AWS",
             "aws-sagemaker"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Applications",
+          "aliasName": null,
+          "tag": null,
+          "description": "Lists application from aws sagemaker server based on input parameters you have provided",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1661775423,
+          "collection": "/api/3/workflow_collections/b0dad48f-25eb-4a2a-a242-eeb47c648aa0",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/942cd744-e6d3-4d43-800d-29a794d3f72e",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "a8224cdd-97fe-45b8-91ba-e22d7c8c20ab",
+                "title": "AWS SageMaker: Get Applications",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "40",
+              "left": "40",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "942cd744-e6d3-4d43-800d-29a794d3f72e"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Applications",
+              "description": null,
+              "arguments": {
+                "name": "AWS SageMaker",
+                "config": "bdfc7c88-bf14-453d-9484-359f7235551b",
+                "params": {
+                  "SortBy": "",
+                  "NextToken": "",
+                  "SortOrder": "",
+                  "MaxResults": "",
+                  "assume_role": false,
+                  "DomainIdEquals": "",
+                  "UserProfileNameEquals": ""
+                },
+                "version": "1.1.0",
+                "connector": "aws-sagemaker",
+                "operation": "get_apps",
+                "operationTitle": "Get Apps",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "193",
+              "left": "361",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "b324ac01-648f-4984-bd6c-fffa14a705f4"
+            }
           ],
-          "id": 5566,
-          "createUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
-          "createDate": 1634811874,
-          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
-          "modifyDate": 1634816936,
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Applications",
+              "targetStep": "/api/3/workflow_steps/b324ac01-648f-4984-bd6c-fffa14a705f4",
+              "sourceStep": "/api/3/workflow_steps/942cd744-e6d3-4d43-800d-29a794d3f72e",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "445bf524-57e1-4a24-a322-423104051a0c"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "17c66ace-df8d-481a-b509-046f84185937",
+          "id": 3327,
           "owners": [],
-          "isPrivate": false
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "AWS",
+            "aws-sagemaker"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Artifacts",
+          "aliasName": null,
+          "tag": null,
+          "description": "Lists the artifacts in your account and their properties.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1661775423,
+          "collection": "/api/3/workflow_collections/b0dad48f-25eb-4a2a-a242-eeb47c648aa0",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/9283a712-4bc4-44de-9b63-9e216da3e549",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Artifacts",
+              "description": null,
+              "arguments": {
+                "name": "AWS SageMaker",
+                "config": "bdfc7c88-bf14-453d-9484-359f7235551b",
+                "params": {
+                  "SortBy": "",
+                  "NextToken": "",
+                  "SortOrder": "Descending",
+                  "SourceUri": "",
+                  "MaxResults": 10,
+                  "assume_role": false,
+                  "ArtifactType": "",
+                  "CreatedAfter": "2021-10-03T18:30:00.000Z",
+                  "CreatedBefore": "2021-10-19T18:30:00.000Z"
+                },
+                "version": "1.1.0",
+                "connector": "aws-sagemaker",
+                "operation": "get_artifacts",
+                "operationTitle": "Get Artifacts",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "177",
+              "left": "344",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "4324bec1-c79b-4f50-ae73-2566b9e21f6a"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "e8dfbf9c-673e-4ee1-9d4d-e39202cea772",
+                "title": "AWS SageMaker: Get Artifacts",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "40",
+              "left": "40",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "9283a712-4bc4-44de-9b63-9e216da3e549"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Artifacts",
+              "targetStep": "/api/3/workflow_steps/4324bec1-c79b-4f50-ae73-2566b9e21f6a",
+              "sourceStep": "/api/3/workflow_steps/9283a712-4bc4-44de-9b63-9e216da3e549",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "1e6a0f03-1836-4765-a5e8-39543a5b6eac"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "9f12bc5b-61ae-48ca-bffb-9b3122c07cea",
+          "id": 3325,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "AWS",
+            "aws-sagemaker"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Actions",
+          "aliasName": null,
+          "tag": null,
+          "description": "Lists the actions in your account and their properties",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1661775423,
+          "collection": "/api/3/workflow_collections/b0dad48f-25eb-4a2a-a242-eeb47c648aa0",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/6704329a-f5b8-457a-9d5e-8eaf092fd851",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Actions",
+              "description": null,
+              "arguments": {
+                "name": "AWS SageMaker",
+                "config": "bdfc7c88-bf14-453d-9484-359f7235551b",
+                "params": {
+                  "SortBy": "",
+                  "NextToken": "",
+                  "SortOrder": "",
+                  "SourceUri": "",
+                  "ActionType": "",
+                  "MaxResults": 10,
+                  "assume_role": false,
+                  "CreatedAfter": "",
+                  "CreatedBefore": ""
+                },
+                "version": "1.1.0",
+                "connector": "aws-sagemaker",
+                "operation": "get_actions",
+                "operationTitle": "Get Actions",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "120",
+              "left": "440",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "1ba3bd5a-f0e5-4554-93ff-68c46cdf2226"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "e950578b-aa24-458f-8b2a-9721affcddf6",
+                "title": "AWS SageMaker: Get Actions",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "40",
+              "left": "40",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "6704329a-f5b8-457a-9d5e-8eaf092fd851"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Actions",
+              "targetStep": "/api/3/workflow_steps/1ba3bd5a-f0e5-4554-93ff-68c46cdf2226",
+              "sourceStep": "/api/3/workflow_steps/6704329a-f5b8-457a-9d5e-8eaf092fd851",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "670cbad1-1245-437e-bef5-ca70c544f16c"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "f1000912-d50a-4874-a538-6934b4b3779a",
+          "id": 3328,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "AWS",
+            "aws-sagemaker"
+          ]
         }
       ]
     }
