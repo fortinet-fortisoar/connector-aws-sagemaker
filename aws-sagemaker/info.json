@@ -147,7 +147,7 @@
           "required": false,
           "editable": true,
           "visible": true,
-          "tooltip": "A filter that returns only actions with the specified source URI.",
+          "tooltip": "A filter that returns only actions with the specified source URI. Note: we can either provide the source URI or Action Type",
           "description": "Specify the source URI using which you want to filter actions retrieved by this operation, i.e., if you specify this parameter, then this operation will return actions with the specified source URI only."
         },
         {
@@ -157,7 +157,7 @@
           "required": false,
           "editable": true,
           "visible": true,
-          "tooltip": "A filter that returns only actions of the specified type.",
+          "tooltip": "A filter that returns only actions of the specified type. Note: we can either provide the source URI or Action Type",
           "description": "Specify the action type using which you want to filter actions retrieved by this operation, i.e., if you specify this parameter, then this operation will return actions of only the specified type."
         },
         {
@@ -192,12 +192,16 @@
         },
         {
           "title": "Sort Order",
-          "type": "text",
+          "type": "select",
           "name": "SortOrder",
+          "options": [
+            "Ascending",
+            "Descending"
+          ],
           "required": false,
           "editable": true,
           "visible": true,
-          "tooltip": "The sort order. The default value is Descending .",
+          "tooltip": "The sort order can be Ascending or Descending. The default value is Descending.",
           "description": "Specify the order of sorting the result; Ascending or Descending. The default value is set as Descending."
         },
         {
@@ -244,7 +248,7 @@
       "title": "Get Algorithms",
       "category": "investigation",
       "annotation": "get_algorithms",
-      "description": "Lists the machine learning algorithms that have been createdin your AWS SageMaker accountbased on the input parameters you have specified.",
+      "description": "Lists the machine learning algorithms that have been created in your AWS SageMaker account based on the input parameters you have specified.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -335,7 +339,11 @@
         },
         {
           "title": "Sort Order",
-          "type": "text",
+          "type": "select",
+          "options": [
+            "Ascending",
+            "Descending"
+          ],
           "name": "SortOrder",
           "required": false,
           "editable": true,
@@ -446,7 +454,11 @@
         },
         {
           "title": "Sort Order",
-          "type": "text",
+          "type": "select",
+          "options": [
+            "Ascending",
+            "Descending"
+          ],
           "name": "SortOrder",
           "required": false,
           "editable": true,
@@ -516,7 +528,7 @@
       "title": "Get Artifacts",
       "category": "investigation",
       "annotation": "get_artifacts",
-      "description": "Lists the artifactsand their properties in your AWS SageMaker account based on the input parameters you have specified.",
+      "description": "Lists the artifacts and their properties in your AWS SageMaker account based on the input parameters you have specified.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -572,7 +584,7 @@
           "required": false,
           "editable": true,
           "visible": true,
-          "tooltip": "A filter that returns only artifacts with the specified source URI.",
+          "tooltip": "A filter that returns only artifacts with the specified source URI. Note: we can either provide the source URI or Artifact Type",
           "description": "Specify the source URI using which you want to filter artifacts retrieved by this operation, i.e., if you specify this parameter, then this operation will return artifacts with the specified source URI only."
         },
         {
@@ -582,7 +594,7 @@
           "required": false,
           "editable": true,
           "visible": true,
-          "tooltip": "A filter that returns only artifacts of the specified type",
+          "tooltip": "A filter that returns only artifacts of the specified type. Note: we can either provide the source URI or Artifact Type",
           "description": "Specify the action type using which you want to filter artifacts retrieved by this operation, i.e., if you specify this parameter, then this operation will return artifacts of only the specified type."
         },
         {
