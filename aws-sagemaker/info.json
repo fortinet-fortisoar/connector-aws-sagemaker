@@ -199,6 +199,7 @@
             "Descending"
           ],
           "required": false,
+          "value": "Descending",
           "editable": true,
           "visible": true,
           "tooltip": "The sort order can be Ascending or Descending. The default value is Descending.",
@@ -345,6 +346,7 @@
             "Descending"
           ],
           "name": "SortOrder",
+          "value": "Ascending",
           "required": false,
           "editable": true,
           "visible": true,
@@ -460,6 +462,7 @@
             "Descending"
           ],
           "name": "SortOrder",
+          "value": "Ascending",
           "required": false,
           "editable": true,
           "visible": true,
